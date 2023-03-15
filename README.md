@@ -88,6 +88,8 @@ Was able to debug the API using ”pypilot_client” and ”tcpdump”.
 It is build with ”Arduino IDE 2.0.4”, using mainly standard libarery’s. 
 
 ## Usage / Files
+![App Screenshot](https://github.com/hans-rickardt/WiFi-connected-PyPilot/tree/main/pilot4_4)
+
 
 ### - pilot3_4.ino:
 
