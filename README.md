@@ -17,15 +17,18 @@ https://github.com/hans-rickardt
 Three years ago I upgraded instrument to Raymarine Axion 9” and CAN-Bus connected equipment. Upgraded Raspberry Pi with CAN-Bus and AIS receiver and IMU compass MPU-925x that is i2c connected.
 
 https://www.electrokit.com/produkt/pican2-can-bus-board-for-raspberry-pi-2-3/
+
 https://shop.wegmatt.com/products/daisy-hat-ais-receiver
 
 
 
 I was inspired by a very well documented OpenPlotter project that hade the same functionality as my own but even more cool integrations like PyPilot. Decided to upgrade to OpenPlotter. 
+
 https://openplotter.readthedocs.io/en/3.x.x/
 
 I convert my autopilot old Autohelm 3000 to PyPilot and keep the motor.
 Found a nice project but it is a lot of cables and I have WiFi already.   
+
 https://open-boat-projects.org/en/pypilot/
 
 
@@ -35,7 +38,7 @@ https://open-boat-projects.org/en/pypilot/
 
 My plan for this project is to to do and WiFi connected PyPilot 
 
-Motor controller is based on but have removed the display that I don’t need.
+Motor controller is based on the link below, but have removed the display that I don’t need.
 https://github.com/McNugget6750/pypilot/tree/master/arduino/motor
 
 To keep it simple I decided to use the same Adruino Nano and the serial port RX, TX conneced to an WiFI capable controller ESP-01S using Ardruino “exampleWiFiTelnetToSerial.ino”.
@@ -57,7 +60,11 @@ https://github.com/hans-rickardt/WiFi-connected-PyPilot/blob/main/images/IMG_307
 
 ## Screenshots
 
-![App Screenshot](https://github.com/hans-rickardt/WiFi-connected-PyPilot/blob/main/images/IMG_3077.jpeg)
+![App Screenshot](https://github.com/hans-rickardt/WiFi-connected-PyPilot/blob/main/images/servo.jpg)
+
+
+
+
 
 
 
