@@ -86,12 +86,16 @@ The module is main display task, scans for event from keyboard and messages buff
 Other:   
 Was not able to get a stable touch screen using the standard library therefore included STMPE610 driver from Olimex. Added two fonts
 
+# - Other:   
+Was not able to get a stable touch screen using the standard library therefore included STMPE610 driver from Olimex. Added two fonts
 
 - Function:
 
 The screen is divided 6 keypad where the top mid is setup where you can select compass, gps, true wind and wind , switch to Tack mode
 
-# test
+# Test
+## Test
+### Test
 
  - [D32](https://www.wemos.cc/en/latest/d32/d32.html)
  - [LCD](https://www.olimex.com/Products/Modules/LCD/MOD-LCD2-8RTP/open-source-hardware)
