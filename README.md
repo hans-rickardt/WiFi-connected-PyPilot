@@ -79,7 +79,7 @@ https://www.wemos.cc/en/latest/d32/d32.html
  
 ## Screenshots
 
-![App Screenshot](https://github.com/hans-rickardt/WiFi-connected-PyPilot/blob/main/images/box1.png)
+![App Screenshot](https://github.com/hans-rickardt/WiFi-connected-PyPilot/blob/main/images/box1.jpg)
 ![App Screenshot](https://github.com/hans-rickardt/WiFi-connected-PyPilot/blob/main/images/box2.png)
 ![App Screenshot](https://github.com/hans-rickardt/WiFi-connected-PyPilot/blob/main/images/box3.png)
 
