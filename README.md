@@ -140,3 +140,5 @@ The screen is divided 6 keypad where the top mid is setup where you can select c
 
 
 Pypilot Openplotter Raspberry Pi OpenCPN Ardruino WiFi 
+#### date:
+2023-03-15
