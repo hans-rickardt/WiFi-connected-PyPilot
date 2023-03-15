@@ -31,7 +31,7 @@ https://open-boat-projects.org/en/pypilot/
 
 
 
-## WiFi PyPilot Servo
+# WiFi PyPilot Servo
 
 My plan for this project is to to do and WiFi connected PyPilot 
 
@@ -61,7 +61,7 @@ https://github.com/hans-rickardt/WiFi-connected-PyPilot/blob/main/images/IMG_307
 
 
 
-## WiFi PyPilot Remote
+# WiFi PyPilot Remote
 
 Next task was to create an WiFi connected remote based on WEMOS LOLIN D32 that have support for WiFi and battery, and 2.8” LCD with touch panel from Olimex.
 Was able to debug the API using ”pypilot_client” and ”tcpdump”. 
@@ -69,33 +69,30 @@ It is build with ”Arduino IDE 2.0.4”, using mainly standard libarery’s.
 
 ## Usage / Files
 
- - pilot3_4.ino:
+### - pilot3_4.ino:
 
 This is the main start up module.
 The D32 is a dual core SOC therefore I divided the task in to “WiFI + API” and display + touch screen.  
 
 
- - WiFi_remote.cpp:
+### - WiFi_remote.cpp:
 
 This module start WiFi and connecting to ”Pypilot-server” at port 23322, send parameters to get several event from Pypilot-server like ”ap.heading”. Listens on event and will analyse and update messages buffers to the display task.
 
 
- - Graf.cpp:
+### - Graf.cpp:
 
 The module is main display task, scans for event from keyboard and messages buffers that wifi_remote.cpp create
 Other:   
 Was not able to get a stable touch screen using the standard library therefore included STMPE610 driver from Olimex. Added two fonts
 
-# - Other:   
+### - Other:   
 Was not able to get a stable touch screen using the standard library therefore included STMPE610 driver from Olimex. Added two fonts
 
 - Function:
 
 The screen is divided 6 keypad where the top mid is setup where you can select compass, gps, true wind and wind , switch to Tack mode
 
-# Test
-## Test
-### Test
 
  - [D32](https://www.wemos.cc/en/latest/d32/d32.html)
  - [LCD](https://www.olimex.com/Products/Modules/LCD/MOD-LCD2-8RTP/open-source-hardware)
