@@ -1,9 +1,9 @@
 
-# Project Title
-
-A brief description of what this project does and who it's for
+#  WiFi connected PyPilot Servo and WiFi Remote
 
 WiFi connected PyPilot Servo and WiFi Remote
+
+
 ## Authors
 
 https://github.com/hans-rickardt
@@ -103,9 +103,15 @@ The screen is divided 6 keypad where the top mid is setup where you can select c
 
  - [D32](https://www.wemos.cc/en/latest/d32/d32.html)
  - [LCD](https://www.olimex.com/Products/Modules/LCD/MOD-LCD2-8RTP/open-source-hardware)
- 
+
+
+## Circuit diagram
+
+## 3D Print stl files
+
 ## Screenshots
 
+![App Screenshot](https://github.com/hans-rickardt/WiFi-connected-PyPilot/blob/main/images/IMG_3077.jpeg)
 ![App Screenshot](https://github.com/hans-rickardt/WiFi-connected-PyPilot/blob/main/images/box1.jpg)
 ![App Screenshot](https://github.com/hans-rickardt/WiFi-connected-PyPilot/blob/main/images/box2.png)
 ![App Screenshot](https://github.com/hans-rickardt/WiFi-connected-PyPilot/blob/main/images/box3.png)
