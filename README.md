@@ -105,9 +105,16 @@ The screen is divided 6 keypad where the top mid is setup where you can select c
  - [LCD](https://www.olimex.com/Products/Modules/LCD/MOD-LCD2-8RTP/open-source-hardware)
 
 
+
+
 ## Circuit diagram
 
+
+
+
 ## 3D Print stl files
+
+
 
 ## Screenshots
 
@@ -116,4 +123,5 @@ The screen is divided 6 keypad where the top mid is setup where you can select c
 ![App Screenshot](https://github.com/hans-rickardt/WiFi-connected-PyPilot/blob/main/images/box2.png)
 ![App Screenshot](https://github.com/hans-rickardt/WiFi-connected-PyPilot/blob/main/images/box3.png)
 
-
+#### Key words
+Pypilot Openplotter Raspberry Pi OpenCPN Ardruino WiFi 
