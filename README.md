@@ -77,3 +77,9 @@ The screen is divided 6 keypad where the top mid is setup where you can select c
 https://www.wemos.cc/en/latest/d32/d32.html
  https://www.olimex.com/Products/Modules/LCD/MOD-LCD2-8RTP/open-source-hardware
  
+## Screenshots
+
+![App Screenshot](https://github.com/hans-rickardt/WiFi-connected-PyPilot/blob/main/images/box1.png)
+![App Screenshot](https://github.com/hans-rickardt/WiFi-connected-PyPilot/blob/main/images/box2.png)
+![App Screenshot](https://github.com/hans-rickardt/WiFi-connected-PyPilot/blob/main/images/box3.png)
+
