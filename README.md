@@ -137,4 +137,6 @@ The screen is divided 6 keypad where the top mid is setup where you can select c
 ![App Screenshot](https://github.com/hans-rickardt/WiFi-connected-PyPilot/blob/main/images/box3.png)
 
 #### Key words
+
+
 Pypilot Openplotter Raspberry Pi OpenCPN Ardruino WiFi 
