@@ -44,8 +44,13 @@ https://github.com/McNugget6750/pypilot/tree/master/arduino/motor
 To keep it simple I decided to use the same Adruino Nano and the serial port RX, TX conneced to an WiFI capable controller ESP-01S using Ardruino “exampleWiFiTelnetToSerial.ino”.
 Need only a few resistors for interface between 5V to 3.3V for RX, TX signals levels, using Speed 4800Baud.
 The flow is ESP-01S connect to WiFi and listening on Port 23 ( Telnet ), when a client connect it will transfer all data to Ardruino Nano as is was USB connected.
- To get PyPilot detect my WiFi connected SerialPort I use a Linix/Unix tool “socat” that can act as Multipurpose relay. A start script in systemd start my “socat.sh” script that connect to ESP-01S, when it is connected it a virtual tty “/dev/ttySRV0” that is a link to a “/dev/pts/?”.
+ To get PyPilot detect my WiFi connected SerialPort I use a Linix/Unix tool “socat” that can act as Multipurpose relay. 
+A start script in systemd start my “socat.sh” script that connect to ESP-01S, when it is connected it a virtual tty “/dev/ttySRV0” that is a link to a “/dev/pts/?”.
 Then you configure PyPilot to use “/dev/ttySRV0” .
+
+I added a second WiFi USB-adapter to support 2.5Ghz and the Raspberry Pi 4 WiFi use 5Ghz.
+
+
 Other component needed 5V and 3.3V regulator.
 
 
@@ -57,6 +62,14 @@ https://github.com/esp8266/Arduino/blob/master/libraries/ESP8266WiFi/examples/Wi
 https://raspberry.redbrain.me/Scripte/Tutorial_socat.html
 
 https://github.com/hans-rickardt/WiFi-connected-PyPilot/blob/main/images/IMG_3077.jpeg
+
+## Deployment
+
+To deploy this project copy catalog  "boat_script" to /home/pi/boat_script
+Enable startup script 
+```
+sudo cp /home/pi/boat_script/socat.service /etc/systemd/system/socat.service
+```
 
 ## Screenshots
 

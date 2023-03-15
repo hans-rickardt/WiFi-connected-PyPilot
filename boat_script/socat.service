@@ -1,0 +1,19 @@
+[Unit]
+Description=connect to pypiolot servo via wifi
+Documentation=https://rickardt.net
+
+[Service]
+Type=simple
+User=pi
+Group=pi
+TimeoutStartSec=0
+Restart=on-failure
+RestartSec=30s
+#ExecStartPre=
+ExecStart=/home/pi/boat_script/socat_servo.sh
+SyslogIdentifier=pypilot_wifi
+#ExecStop=
+
+[Install]
+WantedBy=multi-user.target
+
