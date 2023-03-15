@@ -23,8 +23,8 @@
 #include <algorithm> // std::min
 
 #ifndef STASSID
-#define STASSID "bianca"
-#define STAPSK  "pixelpixel123"
+#define STASSID "openplotter"
+#define STAPSK  "12345678"
 #endif
 
 #define hostname "pypilot_servo"
