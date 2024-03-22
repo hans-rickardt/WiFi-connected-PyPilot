@@ -15,8 +15,8 @@ WiFiClient client;
 #define USING_EUROPE true
 
 const char* host = "10.10.10.1";
-const char* ssid = "bianca";
-const char* password = "pixelpixel123";
+const char* ssid = "openplotter";
+const char* password = "12345678";
 
 
 /* Pypilot Status*/
