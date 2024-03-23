@@ -1,9 +1,7 @@
 #define CAN_2515
-#include <SPI.h>
-//#include <mcp2515.h>
-//#include <ActisenseReader.h>
+//#include <SPI.h>
 //#include <can-serial.h>
-
+#include <mcp_can.h>
 //#include "mcp2515_can.h"
 //#include <ArduinoTrace.h>
 #include <Scheduler.h>
@@ -24,18 +22,19 @@ extern void rpm_fun();
 #define USE_N2K_CAN 1
 #include <Arduino.h>
 
-//#include "NMEA2000_CAN.h"  // This will automatically choose right CAN library and create suitable NMEA2000 object
+#include "NMEA2000_CAN.h"  // This will automatically choose right CAN library and create suitable NMEA2000 object
 #include "N2kMessages.h"
 #include <N2kMessagesEnumToStr.h>
-//#include <mcp_can.h>
+
 #include <Adafruit_Sensor.h>
 //#include <Adafruit_BNO055.h>
 //#include <utility/imumaths.h>
 //#include <EEPROM.h>
-#include <DueFlashStorage.h>
+//#include <DueFlashStorage.h>
 
 #include "Subrutins.h"
 #include "BME_680.h"
+#include "conf.h"
 
 
 /*
@@ -44,7 +43,7 @@ extern void rpm_fun();
 */
 
 /********************************************************************/
-#define VER "MultiDevice_hans8_shed3 20230817"
+#define VER "MultiDevice_hans9_shed1 20240217"
 /********************************************************************/
 
 //Adafruit_BNO055 bno = Adafruit_BNO055(55, 0x28);
@@ -57,6 +56,7 @@ const int analogTemp = A11; // Temp sensor
 const int analogWater = A8;  // Analog input pin
 const int analogVolt = A5;  // Analog input pin
 */
+/*
 #define analogMotor  A9  // Analog input pin water temp
 #define analogFluid  A10  // Analog input pin
 #define analogTemp  A11 // Temp sensor
@@ -65,7 +65,7 @@ const int analogVolt = A5;  // Analog input pin
 #define analogToa   A7
 //const int analogOutPin = 9; // Analog output pin that the LED is attached to
 #define idle_Led  25
-
+*/
 int sensorValue = 0;        // value read from the pot
 int outputValue = 0;        // value output to the PWM (analog out)
 
@@ -74,9 +74,10 @@ int outputValue = 0;        // value output to the PWM (analog out)
 
 // List here messages your device will transmit.
 const unsigned long TemperatureMonitorTransmitMessages[] PROGMEM = {130310L, 130311L, 130312L, 0};
-const unsigned long BatteryMonitorTransmitMessages[] PROGMEM = {127506L, 127508L, 127513L, 0};
+const unsigned long BatteryMonitorTransmitMessages[] PROGMEM = {127505L, 127506L, 127508L, 127513L, 0};
 const unsigned long MotorTransmitMessages[] PROGMEM = {127488L, 127489L, 0};
-//const unsigned long PilotMessages[] PROGMEM = {60928L, 59392L, 59904L, 126996L, 126464L, 127237L, 127245L, 127258L, 127250L, 0};
+//Idag 
+const unsigned long PilotMessages[] PROGMEM = {60928L, 59392L, 59904L, 126996L, 126464L, 127237L, 127245L, 127258L, 127250L, 0};
 /*
 60928,
   59904,
@@ -129,7 +130,7 @@ void HandleNMEA2000Msg(const tN2kMsg &N2kMsg);
 #define DEV_MOT  0
 #define DEV_BAT  1
 #define DEV_TEMP 2
-#define DEV_ALT  3
+//#define DEV_ALT  3
 //
 // MX lock for  NMEA2000.SendMsg(N2kMsg, DEV_TEMP);
 static int MX;
@@ -220,6 +221,7 @@ void setup() {
                                 );
 
   // Set Product information for pilot
+  /*
   NMEA2000.SetProductInformation("112299", // Manufacturer's Model serial code.
                                  1851, // Manufacturer's product code
                                  "ACU200",  // Manufacturer's Model ID
@@ -230,7 +232,7 @@ void setup() {
                                  0xff, // Sertification level - use default
                                  DEV_ALT
                                 );
-
+*/
 
   // Set device information for temperature monitor
   NMEA2000.SetDeviceInformation(112233, // Unique number. Use e.g. Serial number.
@@ -258,7 +260,7 @@ void setup() {
                                 4, // Marine
                                 DEV_MOT
                                );
-
+/*
   // Set device information for 
   NMEA2000.SetDeviceInformation(112299,  // Unique number. Use e.g. Serial number.
                                 150,    // Device function=. See codes on http://www.nmea.org/Assets/20120726%20nmea%202000%20class%20&%20function%20codes%20v%202.00.pdf
@@ -267,7 +269,7 @@ void setup() {
                                 4, // Marine
                                 DEV_ALT
                                );
-
+*/
 
 
 
@@ -291,8 +293,10 @@ void setup() {
 
   NMEA2000.ExtendTransmitMessages(MotorTransmitMessages, DEV_MOT);
 
- // NMEA2000.ExtendTransmitMessages(PilotMessages, DEV_ALT);
-
+ //Idag
+ /*
+  NMEA2000.ExtendTransmitMessages(PilotMessages, DEV_ALT);
+*/
   NMEA2000.SetMsgHandler(HandleNMEA2000Msg);
 
   NMEA2000.Open();
@@ -301,7 +305,7 @@ void setup() {
   Scheduler.startLoop(loop2, 6144);
   Scheduler.startLoop(loop3, 6144);
   Scheduler.startLoop(loop4, 6144);
-  Scheduler.startLoop(loop5, 6144);
+ // Scheduler.startLoop(loop5, 6144);
 
   pinMode(idle_Led, OUTPUT);
 }
@@ -437,7 +441,7 @@ void SendN2kBattery() {
 
   sensorValue = analogRead(analogToa);
   //Serial.println(sensorValue);
-  outputValue = map(sensorValue, 600, 3000, 0, 100); //Test
+  outputValue = map(sensorValue, 3500, 1400, 0, 100); //Test
   //Serial.println(outputValue);
   SetN2kFluidLevel(N2kMsg, 0, N2kft_BlackWater, outputValue , 120);
   //  NMEA2000.SendMsg(N2kMsg, DEV_BAT);
@@ -496,15 +500,17 @@ void loop5() {
 
  tN2kMsg N2kMsg;
 //  SetN2kAttitude(N2kMsg, 1, Heading , Pitch, Roll);
+//double Heading=90;
+//  SendMsg(N2kMsg, DEV_ALT);
+  delay(5000);
 
-  SendMsg(N2kMsg, DEV_ALT);
-  delay(100);
-
+//Idag
 //  SetN2kMagneticHeading(N2kMsg, 1, Heading, +0.00, +0.0);
 
-  //  NMEA2000.SendMsg(N2kMsg, DEV_ALT);
-  SendMsg(N2kMsg, DEV_ALT);
-  delay(100);
+  //Idag
+//    NMEA2000.SendMsg(N2kMsg, DEV_ALT);
+//  SendMsg(N2kMsg, DEV_ALT);
+  delay(5000);
 
 }
 
@@ -552,11 +558,11 @@ void attitude(const tN2kMsg &N2kMsg){
 
   if (ParseN2kAttitude(N2kMsg, SID, Yaw, Pitch, Roll)){
     compass=RadToDeg(Yaw);
-//    Serial.println("attiude");
-//Serial.println(Yaw);
-//Serial.println(Pitch);
-//Serial.println(Roll);
-
+/*    Serial.println("attiude");
+Serial.println(Yaw);
+Serial.println(Pitch);
+Serial.println(Roll);
+*/
   } else {
    Serial.println("Failed to parse attitude PGN: "); Serial.println(N2kMsg.PGN);
   }
@@ -716,7 +722,12 @@ void send_json() {
   String str1 = "{";
   String str2 = " }";
   String strc = String(compass);
-  String strt = String( str1 +  "\"winddir\":" + wdir + ", \"windspeed\":" + wspeed + ", \"compass\":" + strc + ", \"tid\":" + tid + ", \"depth\":" + ddepth  + str2 );
+  String strt = "";
+  if(tid>1){
+  strt = String( str1 +  "\"winddir\":" + wdir + ", \"windspeed\":" + wspeed + ", \"compass\":" + strc + ", \"tid\":" + tid + ", \"depth\":" + ddepth  + str2 );
+  } else {
+  strt = String( str1 +  "\"winddir\":" + wdir + ", \"windspeed\":" + wspeed + ", \"compass\":" + strc + ", \"depth\":" + ddepth  + str2 );  
+  }
   tid = 0;
   Serial.println(strt);
 

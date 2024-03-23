@@ -1,9 +1,10 @@
 //double sensorValue;
 #include "conf.h"
-int rpmcount_nu;
+
 extern long timeold_nu;
 
-  static int rpmcount = 1;
+int rpmcount_nu;
+static int rpmcount = 1;
 unsigned int rpm;
 unsigned long timeold;
 
@@ -37,6 +38,7 @@ double ReadWaterTemp() {
 }
 
 /* Reset CPU*/
+
 void softReset()
 {
   __DSB;
